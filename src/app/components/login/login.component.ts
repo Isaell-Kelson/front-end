@@ -51,7 +51,7 @@ export class LoginComponent {
     if (!this.validateFields()) return;
 
     try {
-      const response = await axios.post('http://104.131.80.155/login', {
+      const response = await axios.post('https://104.131.80.155/login', {
         email: this.email,
         password: this.password
       });
@@ -81,7 +81,7 @@ export class LoginComponent {
     if (!this.validateFields()) return;
 
     try {
-      const response = await axios.post('http://104.131.80.155/users/create', {
+      const response = await axios.post('https://104.131.80.155/users/create', {
         name: this.name,
         email: this.email,
         password: this.password,
