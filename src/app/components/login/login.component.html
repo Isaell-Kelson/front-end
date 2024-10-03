@@ -1,0 +1,61 @@
+<div class="container mt-0 vh-100 min-vw-100 gradient-custom">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-md-6 col-lg-5">
+      <div class="card bg-dark text-white shadow-lg border-0 rounded-lg" style="border-radius: 3rem;">
+        <div class="card-body p-5 text-center">
+          <h2 class="fw-bold mb-2 text-uppercase">
+            {{ isRegister ? 'Crie Sua Conta' : 'Login' }}
+          </h2>
+          <p class="text-white-50 mb-5" *ngIf="!isRegister">Por favor, insira seu login e senha!</p>
+
+          <!-- Mensagens de erro -->
+          <div *ngIf="errors.length > 0" class="alert alert-danger">
+            <ul class="mb-0">
+              <li *ngFor="let error of errors">{{ error }}</li>
+            </ul>
+          </div>
+
+          <!-- Formulário de Login -->
+          <form *ngIf="!isRegister" (ngSubmit)="onLogin()">
+            <div class="form-group mb-4 form-outline form-white">
+              <input type="email" class="form-control form-control-lg" id="login-email" [(ngModel)]="email" name="email" required />
+              <label for="login-email" class="form-label">Email</label>
+            </div>
+            <div class="form-group mb-4 form-outline form-white">
+              <input type="password" class="form-control form-control-lg" id="login-password" [(ngModel)]="password" name="password" required />
+              <label for="login-password" class="form-label">Senha</label>
+            </div>
+            <button type="submit" class="btn btn-outline-light btn-lg px-5">Entrar</button>
+            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+              <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+              <a href="#" class="text-white mx-4"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+            </div>
+            <button type="button" class="btn btn-link text-white-50 fw-bold mt-3" (click)="toggleForm()">Criar Conta</button>
+          </form>
+
+          <!-- Formulário de Cadastro -->
+          <form *ngIf="isRegister" (ngSubmit)="onRegister()">
+            <div *ngIf="isSuccess" class="alert alert-success" role="alert">Cadastro criado com sucesso!</div>
+            <div class="form-group mb-4 form-outline form-white">
+              <input type="text" class="form-control form-control-lg" id="register-name" [(ngModel)]="name" name="name" required />
+              <label for="register-name" class="form-label">Nome</label>
+            </div>
+            <div class="form-group mb-4 form-outline form-white">
+              <input type="email" class="form-control form-control-lg" id="register-email" [(ngModel)]="email" name="email" required />
+              <label for="register-email" class="form-label">Email</label>
+            </div>
+            <div class="form-group mb-4 form-outline form-white">
+              <input type="password" class="form-control form-control-lg" id="register-password" [(ngModel)]="password" name="password" required />
+              <label for="register-password" class="form-label">Senha</label>
+            </div>
+            <input type="hidden" [(ngModel)]="role" name="role" value="user">
+            <input type="hidden" [(ngModel)]="status" name="status" [value]="true">
+            <button type="submit" class="btn btn-outline-light btn-lg px-5">Cadastrar</button>
+            <button type="button" class="btn btn-link text-white-50 fw-bold mt-3" (click)="toggleForm()">Voltar ao Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
