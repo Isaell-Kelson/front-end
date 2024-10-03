@@ -54,7 +54,7 @@ export class ListAdminComponent implements OnInit {
   async fetchUsers() {
     try {
       const token = this.getToken();
-      const response = await axios.get('https://104.131.80.155/users/list', {
+      const response = await axios.get('https://isaellback.shop/users/list', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -81,7 +81,7 @@ export class ListAdminComponent implements OnInit {
   async saveUser(user: User) {
     try {
       const token = this.getToken();
-      await axios.put(`https://104.131.80.155/users/${user.id}`, user, {
+      await axios.put(`https://isaellback.shop/users/${user.id}`, user, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ export class ListAdminComponent implements OnInit {
     try {
       const updatedStatus = !user.status;
       const token = this.getToken();
-      await axios.put(`https://104.131.80.155/users/${user.id}`, {status: updatedStatus}, {
+      await axios.put(`https://isaellback.shop/users/${user.id}`, {status: updatedStatus}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -114,7 +114,7 @@ export class ListAdminComponent implements OnInit {
   async deleteUser(id: string) {
     try {
       const token = this.getToken();
-      await axios.delete(`https://104.131.80.155/users/${id}`, {
+      await axios.delete(`https://isaellback.shop/users/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
